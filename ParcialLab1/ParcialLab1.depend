@@ -1,0 +1,17 @@
+# depslib dependency file v1.0
+1539038822 source:d:\fernandez lucas 2018\algo\parciallab1\main.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<string.h>
+	"utn.h"
+
+1539038353 d:\fernandez lucas 2018\algo\parciallab1\utn.h
+
+1539039059 source:d:\fernandez lucas 2018\algo\parciallab1\utn.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<string.h>
+	"utn.h"
+
