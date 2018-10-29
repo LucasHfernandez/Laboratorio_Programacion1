@@ -2,8 +2,9 @@
 #include <stdlib.h>
 #include <ctype.h>
 #include <string.h>
-#include "utn.h"
 #include "negocios.h"
+#include "utn.h"
+
 
 void initJuego(eJuegos juegos[], int cantidad)
 {
@@ -89,7 +90,7 @@ void bajaJuegos(eJuegos juegos[], int cantidad)
     int i;
     int codigoAux;
     char respuesta;
-    int flag = 0;
+    int bandera = 0;
 
     system("cls");
     printf("Ingrese el codigo del juego: ");
@@ -100,8 +101,8 @@ void bajaJuegos(eJuegos juegos[], int cantidad)
     {
         if(codigoAux == juegos[i].codigo)
         {
-            flag = 1;
-            printf("Descripcion: %s \t importe: %f", juegos[i].descrpicion, juegos[i].importe);
+            bandera = 1;
+            printf("Descripcion: %s \t importe: %f", juegos[i].descripcion, juegos[i].importe);
             printf("\n\n Desea eliminar el registro? S/N: ");
             fflush(stdin);
             scanf("%c", &respuesta);
@@ -128,7 +129,7 @@ void bajaJuegos(eJuegos juegos[], int cantidad)
 
     }
 
-    if(flag == 0)
+    if(bandera == 0)
     {
         printf("Dato inexistente...");
         system("pause");
@@ -136,19 +137,19 @@ void bajaJuegos(eJuegos juegos[], int cantidad)
 }
 
 
-void ordenJuegos(int cantidad)
+void ordenJuegos(eJuegos importe[], int cantidad)
 {
-    eJuegos importe[cantidad], impoAux;
+    float impoAux;
     int i, j;
 
     for(i = 0; i < cantidad; i++){
         for(j = i+1; j < cantidad; j++)
         {
-            if(importe[i] < importe[j])
+            if(importe[i].importe < importe[j].importe)
             {
-                impoAux = importe[i];
-                importe[i] = importe[j];
-                importe[j] = impoAux;
+                impoAux = importe[i].importe;
+                importe[i].importe = importe[j].importe;
+                importe[j].importe = impoAux;
             }
         }
     }
@@ -181,7 +182,7 @@ void altaClientes(eClientes clientes[], int cantidad)
 
         printf("\nIngrese el sexo (M/F): ");
         scanf("%c", &clientes[index].sexo);
-        clientes[index].sexo[0] = toupper(clientes[index].sexo[0]);
+        clientes[index].sexo = toupper(clientes[index].sexo);
 
         printf("\nIngrese el domicilio: ");
 
@@ -190,7 +191,7 @@ void altaClientes(eClientes clientes[], int cantidad)
         clientes[index].domicilio[cantidad-1] = '\0';
         clientes[index].domicilio[0] = toupper(clientes[index].domicilio[0]);
 
-        empleado[index].isEmpty = 0;
+        clientes[index].isEmpty = 0;
     }
 
 }
@@ -275,27 +276,24 @@ void cargaAlquiler(eAlquiler alquiler[], int cantidad)
 {
     eJuegos juegos[cantidad];
     eClientes clientes[cantidad];
-    eFecha fecha[cantidad];
     int i, codigoUno, codigoDos;
 
     printf("Ingrese el codigo del juego: ");
     scanf("%d", &codigoUno);
     printf("Ingrese el codigo del cliente: ");
     scanf("%d", &codigoDos);
-    prinf("Ingrese la fecha: ");
-    scanf("%d %d %d", fecha[cantidad].dia, fecha[cantidad].mes, fecha[cantidad].anio);
+    printf("Ingrese la fecha: ");
+    scanf("%d %d %d", &alquiler[cantidad].fecha.dia, &alquiler[cantidad].fecha.mes, &alquiler[cantidad].fecha.anio);
 
     for(i = 0; i < cantidad; i++)
     {
         if(codigoUno == juegos[i].codigo)
         {
             alquiler[i].codigoJuego = juegos[i].codigo;
-            alquiler[i].fecha = fecha[i].fecha;
         }
         else if(codigoDos == clientes[i].codigo)
         {
             alquiler[i].codigoCliente = clientes[i].codigo;
-            alquiler[i].fecha = fecha[i].fecha;
         }
 
     }

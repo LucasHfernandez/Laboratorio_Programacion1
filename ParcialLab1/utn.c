@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <ctype.h>
 #include <string.h>
+#include "negocios.h"
 #include "utn.h"
 
 int menuOpcion_getNumero(int opcion, char* mensaje, char* mensajeErrorUno)
@@ -93,6 +94,21 @@ int menuClientes_getNumero(int opcion, char* mensaje, char* mensajeErrorUno)
     }
 
     return opcion;
+}
+
+int bloqueoCargaVacia(eJuegos juegos[] ,int cantidad)
+{
+    int i, flag = 0;
+
+    for(i = 0; i < cantidad; i++)
+    {
+        if(juegos[i].isEmpty == 0)
+        {
+            flag = 1;
+        }
+    }
+
+     return flag;
 }
 
 

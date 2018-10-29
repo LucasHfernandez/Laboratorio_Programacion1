@@ -15,3 +15,30 @@
 	<string.h>
 	"utn.h"
 
+1540830723 source:c:\users\lucas\desktop\laboratorio_programacion1-master\parciallab1\main.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<string.h>
+	"negocios.h"
+	"utn.h"
+
+1540830723 c:\users\lucas\desktop\laboratorio_programacion1-master\parciallab1\utn.h
+
+1540827706 c:\users\lucas\desktop\laboratorio_programacion1-master\parciallab1\negocios.h
+
+1540826222 source:c:\users\lucas\desktop\laboratorio_programacion1-master\parciallab1\utn.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<string.h>
+	"utn.h"
+
+1540830723 source:c:\users\lucas\desktop\laboratorio_programacion1-master\parciallab1\negocios.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<string.h>
+	"negocios.h"
+	"utn.h"
+

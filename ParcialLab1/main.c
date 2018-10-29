@@ -2,15 +2,15 @@
 #include <stdlib.h>
 #include <ctype.h>
 #include <string.h>
-#include "utn.h"
 #include "negocios.h"
+#include "utn.h"
 #define cant 100
 
 int main()
 {
     eJuegos juegos[cant];
     eClientes clientes[cant];
-    int opcionMenu, opcionUno, opcionDos;
+    int opcionMenu, opcionUno, opcionDos, flag;
 
     initJuego(juegos, cant);
     initCliente(clientes, cant);
@@ -32,10 +32,20 @@ int main()
            case 2:
                break;
            case 3:
-               bajaJuegos(juegos, cant);
+               flag = bloqueoCargaVacia(juegos, cant);
+               if(flag == 0)
+               {
+                bajaJuegos(juegos, cant);
+               }
+               else
+               {
+                   system("cls");
+                   printf("No existen registros aun para Borrar.");
+                   system("pause");
+               }
                break;
            case 4:
-               ordenJuegos(cant);
+               ordenJuegos(juegos, cant);
                break;
            }
 

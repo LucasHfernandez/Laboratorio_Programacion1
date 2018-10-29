@@ -39,7 +39,7 @@ void initJuego(eJuegos[], int);
 int obtenerEspacioLibreJuegos(eJuegos[], int);
 void altaJuegos(eJuegos[], int);
 void bajaJuegos(eJuegos[], int);
-void ordenJuegos(int);
+void ordenJuegos(eJuegos[], int);
 
 /*Clientes*/
 void initCliente(eClientes[], int);
