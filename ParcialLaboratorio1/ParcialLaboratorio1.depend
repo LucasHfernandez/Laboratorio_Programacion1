@@ -1,0 +1,24 @@
+# depslib dependency file v1.0
+1541965765 source:d:\users\hoshii-manteca\documents\cosillas de hoshii\code blocks projects\2018 new\parciallaboratorio1\alquiler.c
+	<stdio.h>
+	<stdlib.h>
+	"alquiler.h"
+
+1541965765 d:\users\hoshii-manteca\documents\cosillas de hoshii\code blocks projects\2018 new\parciallaboratorio1\alquiler.h
+
+1541965765 source:d:\users\hoshii-manteca\documents\cosillas de hoshii\code blocks projects\2018 new\parciallaboratorio1\clientes.c
+	<stdio.h>
+	<stdlib.h>
+	"clientes.h"
+
+1541966503 d:\users\hoshii-manteca\documents\cosillas de hoshii\code blocks projects\2018 new\parciallaboratorio1\clientes.h
+
+1541965765 source:d:\users\hoshii-manteca\documents\cosillas de hoshii\code blocks projects\2018 new\parciallaboratorio1\utn.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<string.h>
+	"utn.h"
+
+1541965765 d:\users\hoshii-manteca\documents\cosillas de hoshii\code blocks projects\2018 new\parciallaboratorio1\utn.h
+
