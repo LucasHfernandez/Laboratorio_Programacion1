@@ -78,3 +78,26 @@ int utn_menuClientesGetNumero(int opcion, char* mensaje, char* mensajeErrorUno)
 
     return opcion;
 }
+
+int utn_menuAlquileresGetNumero(int opcion, char* mensaje, char* mensajeErrorUno)
+{
+    system("cls");
+    printf("\t\tBienvenido al Menu Alquileres, que desea realizar?");
+    printf("\n\n 1. Alta del alquiler.");
+    printf("\n 2. Baja del alquiler.");
+    printf("\n 3. Listado de alquileres.");
+    printf("\n 4. Volver.");
+    printf(mensaje);
+    fflush(stdin);
+    scanf("%d", &opcion);
+
+    while(opcion > 4 || opcion < 1)
+    {
+        printf(mensajeErrorUno);
+        printf("\n\n Por favor ingrese otro dato: ");
+        fflush(stdin);
+        scanf("%d", &opcion);
+    }
+
+    return opcion;
+}

@@ -16,5 +16,8 @@ typedef struct
 }eAlquiler;
 
 void alquiler_initAlquiler(eAlquiler alquiler[], int);
+void alquiler_altaAlquiler(eAlquiler alquiler[], int cantidad);
+int alquiler_obtenerEspacioLibreAlquiler(eAlquiler alquiler[], int cantidad);
+int alquiler_bloqueoCargaVaciaAlquiler(eAlquiler alquiler[] ,int cantidad);
 
 #endif

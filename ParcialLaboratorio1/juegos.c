@@ -85,6 +85,14 @@ void juego_altaJuegos(eJuegos juegos[], int cantidad)
             fflush(stdin);
             scanf("%f", &juegos[index].importe);
 
+            while(juegos[index].importe <= 0)
+            {
+                printf("\nEl importe debe ser mayor a cero");
+                printf("\nIngrese el importe: ");
+                fflush(stdin);
+                scanf("%f", &juegos[index].importe);
+            }
+
             juegos[index].codigo = juego_genCodigo();
 
             juegos[index].isEmpty = 0;
@@ -109,12 +117,10 @@ void juego_modificarJuegos(eJuegos juegos[], int cantidad)
     int i;
     int opcionUno;
     int opcionDos;
-    int opcionTres;
     int flag;
 
     do
     {
-        flag = 0;
         system("cls");
         printf("Modificar dato de los Juegos.");
         printf("\n------------------------------------------");
@@ -122,6 +128,7 @@ void juego_modificarJuegos(eJuegos juegos[], int cantidad)
         printf("\n\nCodigo: ");
         fflush(stdin);
         scanf("%d", &auxCodigo);
+        flag = 0;
 
         for(i = 0; i < cantidad; i++)
         {
@@ -129,7 +136,7 @@ void juego_modificarJuegos(eJuegos juegos[], int cantidad)
             {
                 flag = 1;
                 printf("\nDato Encontrado :3");
-                printf("\n\nCodigo: %d, Descripcion: %s, Importe: %.2f", juegos[i].codigo, juegos[i].descripcion, juegos[i].importe);
+                printf("\n\nCodigo: %d  -  Descripcion: %s  -  Importe: %.2f", juegos[i].codigo, juegos[i].descripcion, juegos[i].importe);
                 printf("\n\nDesea modificar el registro? SI = 1 NO = 2");
                 printf("\n\nOpcion seleccionada: ");
                 fflush(stdin);
@@ -138,65 +145,37 @@ void juego_modificarJuegos(eJuegos juegos[], int cantidad)
                 while(opcionUno < 1 || opcionUno > 2)
                 {
                     printf("Error, ingrese nuevamente.");
+                    printf("\nOpcion seleccionada: ");
                     fflush(stdin);
                     scanf("%d", &opcionUno);
                 }
-            }
-
-            if(opcionUno == 1)
-            {
-                do
-                {
-                    system("cls");
-                    printf("que datos desea modificar?");
-                    printf("\n----------------------------------------");
-                    printf("\n1.Descripcion: %s", juegos[i].descripcion);
-                    printf("\n\n2.Importe: %.2f", juegos[i].importe);
-                    printf("\n\n3.Salir");
-                    printf("\n\nOpcion seleccionada: ");
-                    fflush(stdin);
-                    scanf("%d", &opcionDos);
-
-                    while(opcionDos < 1 || opcionDos > 3)
-                    {
-                        printf("Error, ingrese nuevamente.");
-                        fflush(stdin);
-                        scanf("%d", &opcionDos);
-                    }
-
-                    switch(opcionDos)
-                    {
-                        case 1:
-                            system("cls");
-                            printf("Ingrese la nueva descripcion: ");
-                            fflush(stdin);
-                            fgets(auxDescripcion, sizeof(auxDescripcion)-2, stdin);
-                            strcpy(juegos[i].descripcion, auxDescripcion);
-                            printf("\nEl dato fue modificado.");
-                            system("pause");
-                            break;
-                        case 2:
-                            system("cls");
-                            printf("Ingrese el nuevo importe: ");
-                            fflush(stdin);
-                            scanf("%f", &auxImporte);
-                            juegos[i].importe = auxImporte;
-                            printf("\nEl dato fue modificado.");
-                            system("pause");
-                            break;
-                    }
-
-                }while(opcionDos != 3);
-               break;
-            }
-
-            if(opcionUno == 2)
-            {
-                printf("\nNo se modificaran los datos.");
-                system("pause");
                 break;
             }
         }
+
+            if(opcionUno == 1)
+            {
+                system("cls");
+                printf("Por favor ingrese los nuevos datos por favor.");
+                printf("\n-------------------------------------------------------");
+                printf("\n1.Descripcion anterior: %s", juegos[i].descripcion);
+                printf("\n2.Importe anterior: %.2f", juegos[i].importe);
+                printf("\n\nIngrese la nueva descripcion: ");
+                fflush(stdin);
+                fgets(auxDescripcion, sizeof(auxDescripcion)-2, stdin);
+                strcpy(juegos[i].descripcion, auxDescripcion);
+                printf("\nIngrese el nuevo importe: ");
+                fflush(stdin);
+                scanf("%f", &auxImporte);
+                juegos[i].importe = auxImporte;
+                printf("\nLos datos fueron modificados n_n");
+                system("pause");
+            }
+            else if(opcionUno == 2 && flag == 1)
+            {
+                printf("\nNo se modificaran los datos.");
+                system("pause");
+            }
 
     if(flag == 0)
     {
@@ -207,9 +186,9 @@ void juego_modificarJuegos(eJuegos juegos[], int cantidad)
     printf("\n\nDesea modificar otro dato? 1= SI 2= NO");
     printf("\nOpcion seleccionada: ");
     fflush(stdin);
-    scanf("%d", &opcionTres);
+    scanf("%d", &opcionDos);
 
-    }while(opcionTres != 2);
+    }while(opcionDos != 2);
 
 }
 
@@ -228,7 +207,7 @@ void juego_bajaJuegos(eJuegos juegos[], int cantidad)
         printf("Bajas de los Juegos.");
         printf("\n---------------------------------");
         printf("\nIngrese el codigo del juego que desea dar de baja.");
-        printf("\n\n Codigo: ");
+        printf("\n\nCodigo: ");
         fflush(stdin);
         scanf("%d", &auxCodigo);
 
@@ -247,6 +226,7 @@ void juego_bajaJuegos(eJuegos juegos[], int cantidad)
                 while(opcionUno < 1 || opcionUno > 2)
                 {
                     printf("Error, ingrese nuevamente.");
+                    printf("\nOpcion seleccionada: ");
                     fflush(stdin);
                     scanf("%d", &opcionUno);
                 }
@@ -285,33 +265,19 @@ void juego_bajaJuegos(eJuegos juegos[], int cantidad)
 
 void juego_listaJuegos(eJuegos juegos[], int cantidad)
 {
-    int i, j;
-    float auxImporte;
-    char* auxDescripcion;
+    int i;
 
     system("cls");
     printf("Lista de todos los Juegos.");
     printf("\n------------------------------------");
 
-    for(i = 0; i < cantidad; i++){
-        for(j = i+1; j < cantidad; j++)
+    for(i = 0; i < cantidad; i++)
+    {
+        if(juegos[i].isEmpty == 0)
         {
-            if(juegos[i].descripcion > juegos[j].descripcion)
-            {
-                auxDescripcion = juegos[i].descripcion;
-                strcpy(juegos[i].descripcion, juegos[j].descripcion);
-                strcpy(juegos[i].descripcion, auxDescripcion);
-                printf("\nDescripcion: %s\n", juegos[i].descripcion);
-            }
-
-            if(juegos[i].importe < juegos[j].importe)
-            {
-                auxImporte = juegos[i].importe;
-                juegos[i].importe = juegos[j].importe;
-                juegos[j].importe = auxImporte;
-                printf("Importe: %.2f\n", juegos[i].importe);
-                printf("--------------------------------------------------");
-            }
+            printf("\nCodigo: %d  -  Importe: %.2f  -  Descripcion: %s\n", juegos[i].codigo, juegos[i].importe, juegos[i].descripcion);
+            printf("-------------------------------------------------------------------------------------------------------------------");
         }
     }
+    system("pause");
 }

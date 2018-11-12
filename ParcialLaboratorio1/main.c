@@ -73,11 +73,93 @@ int main()
                 }
                 break;
             case 2:
+                opcionDos = utn_menuClientesGetNumero(opcionDos, "\n\nOpcion seleccionada: ", "Error! *-* El dato no es valido.");
+                switch(opcionDos)
+                {
+                    case 1:
+                        cliente_altaClientes(clientes, cant);
+                        break;
+                    case 2:
+                        flag = cliente_bloqueoCargaVaciaCliente(clientes, cant);
+                        if(flag == 1)
+                        {
+                            cliente_modificarCliente(clientes, cant);
+                        }
+                        else
+                        {
+                            printf("\nNo hay registros para modificar.");
+                            system("pause");
+                        }
+                        break;
+                    case 3:
+                        flag = cliente_bloqueoCargaVaciaCliente(clientes, cant);
+                         if(flag == 1)
+                        {
+                            cliente_bajaClientes(clientes, cant);
+                        }
+                        else
+                        {
+                            printf("\nNo hay registros para eliminar.");
+                            system("pause");
+                        }
+                        break;
+                    case 4:
+                        flag = cliente_bloqueoCargaVaciaCliente(clientes, cant);
+                         if(flag == 1)
+                        {
+                            cliente_listaClientes(clientes, cant);
+                        }
+                        else
+                        {
+                            printf("\nNo hay registros para listar.");
+                            system("pause");
+                        }
+                        break;
+                    case 5:
+                        break;
+                }
+                break;
+            case 3:
+                opcionTres = utn_menuAlquileresGetNumero(opcionTres, "\n\nOpcion seleccionada: ", "Error! *-* El dato no es valido.");
+                switch(opcionTres)
+                {
+                    case 1:
+                        alquiler_altaAlquiler(alquiler, cant);
+                        break;
+                    /*case 2:
+                        flag = alquiler_bloqueoCargaVaciaAlquiler(alquiler, cant);
+                        if(flag == 1)
+                        {
 
+                        }
+                        else
+                        {
+                            printf("\nNo hay registros para eliminar.");
+                            system("pause");
+                        }
+                        break;
+                    case 3:
+                        flag = alquiler_bloqueoCargaVaciaAlquiler(alquiler, cant);
+                        if(flag == 1)
+                        {
+
+                        }
+                        else
+                        {
+                            printf("\nNo hay registros para listar.");
+                            system("pause");
+                        }
+                        break;
+                    case 4:
+                        break;*/
+                }
+                break;
+            case 4:
+                break;
+            case 5:
+                printf("Adios! n_n");
                 break;
         }
-
-
 
     }while(opcionMenu != 5);
 
