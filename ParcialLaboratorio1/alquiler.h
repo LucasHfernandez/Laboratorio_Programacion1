@@ -1,5 +1,5 @@
-#ifndef FUNCIONES_H_INCLUDED
-#define FUNCIONES_H_INCLUDED
+#ifndef FUNCIONES_A_INCLUDED
+#define FUNCIONES_A_INCLUDED
 
 typedef struct
 {
@@ -15,6 +15,6 @@ typedef struct
     eFecha fecha;
 }eAlquiler;
 
-void alquiler_initAlquiler(eAlquiler[], int);
+void alquiler_initAlquiler(eAlquiler alquiler[], int);
 
 #endif

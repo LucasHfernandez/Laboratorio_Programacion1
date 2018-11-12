@@ -1,5 +1,5 @@
-#ifndef FUNCIONES_H_INCLUDED
-#define FUNCIONES_H_INCLUDED
+#ifndef FUNCIONES_C_INCLUDED
+#define FUNCIONES_C_INCLUDED
 
 typedef struct
 {
@@ -11,6 +11,6 @@ typedef struct
     int isEmpty;
 }eClientes;
 
-void cliente_initCliente(eClientes[], int cantidad);
+void cliente_initCliente(eClientes clientes[], int cantidad);
 
 #endif

@@ -22,3 +22,44 @@
 
 1541965765 d:\users\hoshii-manteca\documents\cosillas de hoshii\code blocks projects\2018 new\parciallaboratorio1\utn.h
 
+1541974354 source:c:\users\guiedis\desktop\laboratorio_programacion1-master\parciallaboratorio1\alquiler.c
+	<stdio.h>
+	<stdlib.h>
+	"alquiler.h"
+
+1541974839 c:\users\guiedis\desktop\laboratorio_programacion1-master\parciallaboratorio1\alquiler.h
+
+1541974354 source:c:\users\guiedis\desktop\laboratorio_programacion1-master\parciallaboratorio1\clientes.c
+	<stdio.h>
+	<stdlib.h>
+	"clientes.h"
+
+1541974839 c:\users\guiedis\desktop\laboratorio_programacion1-master\parciallaboratorio1\clientes.h
+
+1541974880 source:c:\users\guiedis\desktop\laboratorio_programacion1-master\parciallaboratorio1\utn.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<string.h>
+	"utn.h"
+
+1541974839 c:\users\guiedis\desktop\laboratorio_programacion1-master\parciallaboratorio1\utn.h
+
+1541977372 source:c:\users\guiedis\desktop\laboratorio_programacion1-master\parciallaboratorio1\juegos.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"juegos.h"
+
+1541980454 c:\users\guiedis\desktop\laboratorio_programacion1-master\parciallaboratorio1\juegos.h
+
+1541975531 source:c:\users\guiedis\desktop\laboratorio_programacion1-master\parciallaboratorio1\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"juegos.h"
+	"clientes.h"
+	"alquiler.h"
+	"utn.h"
+

@@ -15,7 +15,6 @@ void juego_modificarJuegos(eJuegos juegos[], int cantidad);
 void juego_bajaJuegos(eJuegos juegos[], int cantidad);
 void juego_listaJuegos(eJuegos juegos[], int cantidad);
 int juego_obtenerEspacioLibreJuegos(eJuegos juegos[], int cantidad);
-int juego_genCodigo(char* codigo);
 int juego_bloqueoCargaVaciaJuego(eJuegos juegos[] ,int cantidad);
 
 #endif

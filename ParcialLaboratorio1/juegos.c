@@ -10,18 +10,18 @@ void juego_initJuego(eJuegos juegos[], int cantidad)
 
     for(i = 0; i < cantidad; i++)
     {
-        juegos[i].isEmpty = 0;
+        juegos[i].isEmpty = 1;
     }
 }
 
 
 int juego_obtenerEspacioLibreJuegos(eJuegos juegos[], int cantidad)
 {
-    int i, retorno = 0;
+    int i, retorno = -1;
 
     for(i = 0; i < cantidad; i++)
     {
-        if(juegos[i].isEmpty == 0)
+        if(juegos[i].isEmpty == 1)
         {
             retorno = i;
             break;
@@ -32,25 +32,11 @@ int juego_obtenerEspacioLibreJuegos(eJuegos juegos[], int cantidad)
 }
 
 
-int juego_genCodigo(char* strCodigo)
+static int juego_genCodigo(void)
 {
-    int retorno = 0;
-    int codigo;
     static int nextId = -1;
 
-    codigo = atoi(strCodigo);
-
-    if(codigo == -1)
-        {
-            nextId++;
-            retorno = 1;
-        }else if(codigo > nextId)
-        {
-            nextId = codigo;
-            retorno = 1;
-        }
-
-    return retorno;
+    return ++nextId;
 }
 
 int juego_bloqueoCargaVaciaJuego(eJuegos juegos[] ,int cantidad)
@@ -59,7 +45,7 @@ int juego_bloqueoCargaVaciaJuego(eJuegos juegos[] ,int cantidad)
 
     for(i = 0; i < cantidad; i++)
     {
-        if(juegos[i].isEmpty == 0)
+        if(juegos[i].isEmpty == 1)
         {
             flag = 0;
         }
@@ -77,33 +63,41 @@ int juego_bloqueoCargaVaciaJuego(eJuegos juegos[] ,int cantidad)
 void juego_altaJuegos(eJuegos juegos[], int cantidad)
 {
     int index;
-    char codigo[200] = "-1";
+    int opcion;
 
-    index = juego_obtenerEspacioLibreJuegos(juegos, cantidad);
-
-    if(index != 0)
+    do
     {
-        juegos[index].codigo = juego_genCodigo(codigo);
+        index = juego_obtenerEspacioLibreJuegos(juegos, cantidad);
 
-        system("cls");
-        printf("Altas de los Juegos.");
-        printf("\n-------------------------------");
-        printf("\nIngrese la descripcion: ");
-        fflush(stdin);
-        fgets(juegos[index].descripcion, sizeof(juegos[index].descripcion)-2, stdin);
-        cantidad = strlen(juegos[index].descripcion);
-        juegos[index].descripcion[cantidad-1] = '\0';
-        juegos[index].descripcion[0] = toupper(juegos[index].descripcion[0]);
+        if(index != -1)
+        {
+            system("cls");
+            printf("Altas de los Juegos.");
+            printf("\n-------------------------------");
+            printf("\nIngrese la descripcion: ");
+            fflush(stdin);
+            fgets(juegos[index].descripcion, sizeof(juegos[index].descripcion)-2, stdin);
+            cantidad = strlen(juegos[index].descripcion);
+            juegos[index].descripcion[cantidad-1] = '\0';
+            juegos[index].descripcion[0] = toupper(juegos[index].descripcion[0]);
 
-        printf("\nIngrese el importe: ");
-        fflush(stdin);
-        scanf("%f", &juegos[index].importe);
+            printf("\nIngrese el importe: ");
+            fflush(stdin);
+            scanf("%f", &juegos[index].importe);
 
-        juegos[index].isEmpty = 1;
+            juegos[index].codigo = juego_genCodigo();
 
-        printf("\n\nEl juego fue dado de alta n_n");
-        system("pause");
-    }
+            juegos[index].isEmpty = 0;
+
+            printf("\nEl juego fue dado de alta n_n");
+            system("pause");
+
+            printf("\n\nDesea dar de alta otro dato? 1= SI 2= NO");
+            printf("\nOpcion seleccionada: ");
+            fflush(stdin);
+            scanf("%d", &opcion);
+        }
+    }while(opcion != 2);
 }
 
 
@@ -116,15 +110,16 @@ void juego_modificarJuegos(eJuegos juegos[], int cantidad)
     int opcionUno;
     int opcionDos;
     int opcionTres;
-    int flag = 0;
+    int flag;
 
     do
     {
+        flag = 0;
         system("cls");
         printf("Modificar dato de los Juegos.");
         printf("\n------------------------------------------");
         printf("\nIngrese el codigo del juego que desea modificar.");
-        printf("\n\n Codigo: ");
+        printf("\n\nCodigo: ");
         fflush(stdin);
         scanf("%d", &auxCodigo);
 
@@ -155,9 +150,10 @@ void juego_modificarJuegos(eJuegos juegos[], int cantidad)
                     system("cls");
                     printf("que datos desea modificar?");
                     printf("\n----------------------------------------");
-                    printf("\n\n1.Descripcion");
-                    printf("\n2.Importe");
-                    printf("\n3.Salir");
+                    printf("\n1.Descripcion: %s", juegos[i].descripcion);
+                    printf("\n\n2.Importe: %.2f", juegos[i].importe);
+                    printf("\n\n3.Salir");
+                    printf("\n\nOpcion seleccionada: ");
                     fflush(stdin);
                     scanf("%d", &opcionDos);
 
@@ -176,7 +172,7 @@ void juego_modificarJuegos(eJuegos juegos[], int cantidad)
                             fflush(stdin);
                             fgets(auxDescripcion, sizeof(auxDescripcion)-2, stdin);
                             strcpy(juegos[i].descripcion, auxDescripcion);
-                            printf("\n\nEl dato fue modificado.");
+                            printf("\nEl dato fue modificado.");
                             system("pause");
                             break;
                         case 2:
@@ -185,22 +181,28 @@ void juego_modificarJuegos(eJuegos juegos[], int cantidad)
                             fflush(stdin);
                             scanf("%f", &auxImporte);
                             juegos[i].importe = auxImporte;
-                            printf("\n\nEl dato fue modificado.");
+                            printf("\nEl dato fue modificado.");
                             system("pause");
                             break;
                     }
 
                 }while(opcionDos != 3);
-
                break;
             }
-            else if(opcionUno == 2)
+
+            if(opcionUno == 2)
             {
                 printf("\nNo se modificaran los datos.");
                 system("pause");
                 break;
             }
         }
+
+    if(flag == 0)
+    {
+        printf("Dato inexistente...");
+        system("pause");
+    }
 
     printf("\n\nDesea modificar otro dato? 1= SI 2= NO");
     printf("\nOpcion seleccionada: ");
@@ -285,7 +287,7 @@ void juego_listaJuegos(eJuegos juegos[], int cantidad)
 {
     int i, j;
     float auxImporte;
-    char auxDescripcion[200];
+    char* auxDescripcion;
 
     system("cls");
     printf("Lista de todos los Juegos.");
@@ -297,8 +299,8 @@ void juego_listaJuegos(eJuegos juegos[], int cantidad)
             if(juegos[i].descripcion > juegos[j].descripcion)
             {
                 auxDescripcion = juegos[i].descripcion;
-                juegos[i].descripcion = juegos[j].descripcion;
-                juegos[j].descrpicion = auxDescripcion;
+                strcpy(juegos[i].descripcion, juegos[j].descripcion);
+                strcpy(juegos[i].descripcion, auxDescripcion);
                 printf("\nDescripcion: %s\n", juegos[i].descripcion);
             }
 

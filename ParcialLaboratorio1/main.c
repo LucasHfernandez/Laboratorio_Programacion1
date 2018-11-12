@@ -9,10 +9,9 @@
 
 int main()
 {
-    eJuegos juegos[cant];
-    eClientes clientes[cant];
     eAlquiler alquiler[cant];
-
+    eClientes clientes[cant];
+    eJuegos juegos[cant];
     int opcionMenu, opcionUno, opcionDos, opcionTres;
     int flag;
 
@@ -74,6 +73,7 @@ int main()
                 }
                 break;
             case 2:
+
                 break;
         }
 

@@ -1,5 +1,5 @@
-#ifndef FUNCIONES_H_INCLUDED
-#define FUNCIONES_H_INCLUDED
+#ifndef FUNCIONES_U_INCLUDED
+#define FUNCIONES_U_INCLUDED
 
 int utn_menuGetNumero(int opcion, char* mensaje, char* mensajeErrorUno);
 int utn_menuJuegosGetNumero(int opcion, char* mensaje, char* mensajeErrorUno);

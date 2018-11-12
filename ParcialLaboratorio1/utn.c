@@ -31,8 +31,6 @@ int utn_menuGetNumero(int opcion, char* mensaje, char* mensajeErrorUno)
 
 int utn_menuJuegosGetNumero(int opcion, char* mensaje, char* mensajeErrorUno)
 {
-    char salir;
-
     system("cls");
     printf("\t\tBienvenido al Menu Juegos, que desea realizar?");
     printf("\n\n 1. Alta del juego.");
@@ -59,8 +57,6 @@ int utn_menuJuegosGetNumero(int opcion, char* mensaje, char* mensajeErrorUno)
 
 int utn_menuClientesGetNumero(int opcion, char* mensaje, char* mensajeErrorUno)
 {
-    char salir;
-
     system("cls");
     printf("\t\tBienvenido al Menu Clientes, que desea realizar?");
     printf("\n\n 1. Alta del cliente.");
